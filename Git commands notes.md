@@ -176,6 +176,226 @@ It helps multiple developers work together on the same project — keeping a com
 
 ---
 
+# ⚖️ Git Commands – Common Differences Explained
+
+A quick guide to understanding the differences between similar or easily confused Git commands.
+
+## 🌀 git fetch vs git pull
+| Command      | Description                                                                                        |
+| ------------ | -------------------------------------------------------------------------------------------------- |
+| `git fetch` | Downloads commits, branches, and files from a remote repository but doesn’t merge them into your current branch. |
+| `git pull` | Does everything fetch does, plus merges the fetched commits into your current branch.      |
+
+Example:
+- `git fetch origin main`   # Updates remote tracking branch only
+- `git merge origin/main`   # Merge manually (safer)
+**Example:**
+
+```bash
+git fetch origin main  # Updates remote tracking branch only
+git merge origin/main   # Merge manually (safer)
+```
+**Note:**
+Use `fetch` when you want to review changes before merging, and pull when you’re confident and ready to update your branch immediately.
+
+---
+
+
+---
+
+## 🌿 git merge vs git rebase
+
+| Command      | Description                                                                                        |
+| ------------ | -------------------------------------------------------------------------------------------------- |
+| `git merge`  | Combines changes from one branch into another, preserving commit history (creates a merge commit). |
+| `git rebase` | Reapplies commits from one branch on top of another, resulting in a linear, cleaner history.       |
+
+**Example:**
+
+```bash
+git merge feature-branch    # Keeps both histories
+git rebase main             # Moves commits as if made on top of main
+```
+
+**Note:**
+Use `merge` for shared/public branches.
+Use `rebase` for cleaning up local feature branches before merging.
+
+---
+
+## 📥 git clone vs git fork
+
+| Command     | Description                                                                                           |
+| ----------- | ----------------------------------------------------------------------------------------------------- |
+| `git clone` | Creates a local copy of an existing repository.                                                       |
+| `git fork`  | (On platforms like GitHub) creates your own copy of someone else's repository in your GitHub account. |
+
+**Example:**
+
+```bash
+git clone https://github.com/user/repo.git
+```
+
+**Note:**
+Forking is done online (GitHub UI), cloning is done locally via Git.
+
+---
+
+## 🧰 git reset vs git revert
+
+| Command      | Description                                                                     |
+| ------------ | ------------------------------------------------------------------------------- |
+| `git reset`  | Moves the HEAD pointer to a specific commit — can change history (destructive). |
+| `git revert` | Creates a new commit that undoes a previous one — keeps history intact (safe).  |
+
+**Example:**
+
+```bash
+git reset --hard HEAD~1    # Delete last commit
+git revert HEAD            # Undo last commit safely
+```
+
+**Note:**
+Use `revert` for public branches; use `reset` only locally when no one else has pulled your changes.
+
+---
+
+## 🧺 git stash vs git commit
+
+| Command      | Description                                                      |
+| ------------ | ---------------------------------------------------------------- |
+| `git stash`  | Temporarily saves uncommitted changes without creating a commit. |
+| `git commit` | Permanently records changes into repo history.                   |
+
+**Example:**
+
+```bash
+git stash        # Save for later
+git stash pop    # Reapply stashed changes
+```
+
+**Note:**
+Use `stash` when you need to switch branches quickly but aren’t ready to commit.
+
+---
+
+## 🪶 git checkout vs git switch vs git restore
+
+| Command        | Description                                                                |
+| -------------- | -------------------------------------------------------------------------- |
+| `git checkout` | Old multi-purpose command used for switching branches and restoring files. |
+| `git switch`   | Newer, clearer command for switching branches only.                        |
+| `git restore`  | Newer command for restoring file changes.                                  |
+
+**Example:**
+
+```bash
+git switch feature-branch     # Switch branch
+git restore file.txt          # Discard changes
+```
+
+**Note:**
+`switch` and `restore` are safer and more readable replacements for `checkout`.
+
+---
+
+## 🔄 git push vs git push -u
+
+| Command                       | Description                                                         |
+| ----------------------------- | ------------------------------------------------------------------- |
+| `git push`                    | Pushes your local commits to a remote branch (if tracking is set).  |
+| `git push -u origin <branch>` | Pushes your branch and sets it as upstream, linking local ↔ remote. |
+
+**Example:**
+
+```bash
+git push -u origin feature-branch
+```
+
+**Note:**
+Use `-u` the first time you push a branch; afterward, you can just use `git push`.
+
+--
+
+## 🏷️ git tag vs git branch
+
+| Command      | Description                                                 |
+| ------------ | ----------------------------------------------------------- |
+| `git tag`    | Marks a specific commit as a version or milestone (static). |
+| `git branch` | Creates a new line of development (active).                 |
+
+**Example:**
+
+```bash
+git tag v1.0
+git branch feature-x
+```
+
+**Note:**
+Tags are snapshots; branches are ongoing lines of work.
+
+---
+
+## 🔍 git log vs git reflog
+
+| Command      | Description                                                           |
+| ------------ | --------------------------------------------------------------------- |
+| `git log`    | Shows commit history of the repository.                               |
+| `git reflog` | Shows all actions affecting HEAD (including resets, checkouts, etc.). |
+
+**Example:**
+
+```bash
+git log
+git reflog
+```
+
+**Note:**
+Use `reflog` to recover commits after accidental resets or deletes.
+
+---
+
+## 🧩 git fetch vs git clone
+
+| Command     | Description                                           |
+| ----------- | ----------------------------------------------------- |
+| `git fetch` | Updates your existing local repo with remote changes. |
+| `git clone` | Downloads the entire remote repo as a new local copy. |
+
+**Example:**
+
+```bash
+git clone https://github.com/user/repo.git
+git fetch origin
+```
+
+**Note:**
+`clone` = first-time setup.
+`fetch` = update an existing repo.
+
+---
+
+## 📦 git pull vs git merge
+
+| Command     | Description                                                               |
+| ----------- | ------------------------------------------------------------------------- |
+| `git pull`  | Fetches and merges the remote branch automatically.                       |
+| `git merge` | Combines any branch (local or fetched) into your current branch manually. |
+
+**Example:**
+
+```bash
+git pull origin main   # Fetch + Merge
+git merge feature      # Merge manually
+```
+
+**Note:**
+`pull` = automated merge from remote.
+`merge` = manual, flexible integration of branches.
+
+---
+
+
 ## 📚 Notes
 
 * Use `--help` with any command for detailed documentation.
