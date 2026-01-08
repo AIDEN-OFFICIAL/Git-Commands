@@ -168,7 +168,7 @@ It helps multiple developers work together on the same project — keeping a com
 
 | Command                              | Description                                       |
 | ------------------------------------ | ------------------------------------------------- |
-| `git alias.<alias-name> "<command>"` | Create a custom git alias.                        |
+| `git  config --global alias.<alias-name> "<command>"` | Create a custom git alias.                        |
 | `git log -p`                         | Show patches (changes) in log.                    |
 | `git diff --name-only`               | List changed file names only.                     |
 | `git show HEAD~1`                    | View details of the previous commit.              |
