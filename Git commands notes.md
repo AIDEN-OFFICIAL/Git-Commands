@@ -64,7 +64,7 @@ It helps multiple developers work together on the same project — keeping a com
 | `git restore --staged <file>` | Unstage a file (keep changes).               |
 | `git commit -m "message"`     | Commit staged changes.                       |
 | `git commit -am "message"`    | Stage and commit all modified tracked files. |
-| `git amend -m "new message"`  | Edit the last commit message.                |
+| `git commit --amend -m "new message"`  | Edit the last commit message.                |
 
 ---
 
